@@ -50,6 +50,7 @@ export default function Shopping() {
     .then(data =>{
       cartItems.push(data)
       GetCartCount();
+      alert(`${data.title}\n Added to Cart`)
     })
   }
 
