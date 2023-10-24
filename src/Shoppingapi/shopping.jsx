@@ -69,7 +69,15 @@ export default function Shopping() {
   function handleWomenChange(){
     LoadProducts("https://fakestoreapi.com/products/category/women's%20clothing");
   }
-
+  function DeleltItem(e){
+    fetch(`http://fakestoreapi.com/products/${e.target.id}`)
+    .then(response =>response.json())
+    .then(data=>{
+      cartItems.pop(data)
+      GetCartCount();
+      alert(`are you Sure you want to remove  from Cart`)
+    })
+  }
   return (
     <div className="conatiner-fluid">
       <header className="conatiner d-flex justify-content-between p-2 mt-1 bg-dark text-white">
@@ -115,7 +123,7 @@ export default function Shopping() {
                           <td><img src={item.image} alt="..." width="50" height="50"/></td>
                           <td>{item.price}</td>
                           <td>
-                            <button className="btn btn-danger">
+                            <button  className="btn btn-danger" onClick={DeleltItem}>
                               <span className="bi bi-trash-fill"></span>
                             </button>
                           </td>
