@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./shopping.css";
+import axios from "axios";
 
 export default function Shopping() {
   const Titale = "FakeStore";
 
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
-  const [cartItems, setCartItems] = useState([])
+  const [cartItems] = useState([])
   const [cartCount, setCartCount] = useState(0)
 
   function GetCartCount(){
@@ -32,7 +33,7 @@ export default function Shopping() {
     LoadCategories();
     LoadProducts("https://fakestoreapi.com/products");
     GetCartCount();
-  },[]);
+  });
 
   function handleCategoryChange(event){
     if(event.target.value === 'all')
@@ -69,15 +70,24 @@ export default function Shopping() {
   function handleWomenChange(){
     LoadProducts("https://fakestoreapi.com/products/category/women's%20clothing");
   }
+  // function DeleltItem(e){
+  //   fetch(`http://fakestoreapi.com/products/${e.target.id}`)
+  //   .then(response =>response.json())
+  //   .then(data=>{
+  //     cartItems.pop(data)
+  //     GetCartCount();
+  //     alert(`are you Sure you want to remove  from Cart`)
+  //   })
+  // }
   function DeleltItem(e){
-    fetch(`http://fakestoreapi.com/products/${e.target.id}`)
-    .then(response =>response.json())
-    .then(data=>{
-      cartItems.pop(data)
+    axios(`https://fakestoreapi.com/products/${e.target.id}`)
+    .then((response)=>{
+      cartItems.pop(response);
       GetCartCount();
       alert(`are you Sure you want to remove  from Cart`)
     })
   }
+
   return (
     <div className="conatiner-fluid">
       <header className="conatiner d-flex justify-content-between p-2 mt-1 bg-dark text-white">
