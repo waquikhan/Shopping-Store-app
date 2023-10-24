@@ -77,7 +77,7 @@ export default function Shopping() {
           <h2>{Titale}</h2>
         </div>
         <div>
-          <span className="me-5"><button onClick={handleHomeChange} className="btn text-white ">Home</button></span>
+          <span className="me-5"><button onClick={handleHomeChange} className="btn text-white ">Waqui</button></span>
           <span className="me-5"><button onClick={handleElectronicChange} className="btn text-white ">Electronics</button></span>
           <span className="me-5"><button onClick={handleJaweleryChange} className="btn text-white ">Jewelery</button></span>
           <span className="me-5"><button onClick={handleMenChange} className="btn text-white ">Men's Fashions</button></span>
