@@ -33,7 +33,7 @@ export default function Shopping() {
     LoadCategories();
     LoadProducts("https://fakestoreapi.com/products");
     GetCartCount();
-  });
+  }, []);
 
   function handleCategoryChange(event){
     if(event.target.value === 'all')
@@ -133,7 +133,7 @@ export default function Shopping() {
                           <td><img src={item.image} alt="..." width="50" height="50"/></td>
                           <td>{item.price}</td>
                           <td>
-                            <button  className="btn btn-danger" onClick={DeleltItem}>
+                            <button  className="btn btn-danger" onClick={DeleltItem} >
                               <span className="bi bi-trash-fill"></span>
                             </button>
                           </td>
